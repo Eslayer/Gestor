@@ -150,7 +150,7 @@ public class RegistroDepto {
             Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "UPDATE Departamento set nombreDept = ? WHERE idlibro=?" ;
+            String query = "UPDATE Departamento set nombreDept = ? WHERE idDept=?" ;
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
