@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import Controlador.Registro;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Slayer
@@ -40,6 +43,11 @@ public class Frm_EliminarEmpleado extends javax.swing.JFrame {
         jLabel2.setText("Ingresar ID:");
 
         jbtn_EliminarEmp.setText("Eliminar");
+        jbtn_EliminarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_EliminarEmpActionPerformed(evt);
+            }
+        });
 
         jbtn_Volver.setText("Volver");
         jbtn_Volver.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +99,26 @@ public class Frm_EliminarEmpleado extends javax.swing.JFrame {
         menu.setVisible(true);
         dispose();  
     }//GEN-LAST:event_jbtn_VolverActionPerformed
+
+    private void jbtn_EliminarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_EliminarEmpActionPerformed
+        
+        int id;
+        
+        id = Integer.parseInt(this.jtxt_idEliminarEMP.getText());
+        
+        Registro reg = new Registro();
+        
+        int opcion = JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar a este Empleado?","Eliminar",0);
+        
+        if (opcion == 0) {
+            reg.eliminar(id);
+            JOptionPane.showMessageDialog(null, "Empleado eliminado", "Eliminar", 1);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Empleado No eliminado", "Eliminar", 2);
+        }
+        
+    }//GEN-LAST:event_jbtn_EliminarEmpActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,12 @@
  */
 package Vista;
 
+import Controlador.Registro;
+import Modelo.Empleado;
+import javax.swing.JOptionPane;
+//import Modelo.Departamento
+
+
 /**
  *
  * @author Slayer
@@ -41,14 +47,9 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         jtxt_apMaternoACT = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jtxt_deptACT = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jtxt_contratoDiaACT = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jtxt_diaACT = new javax.swing.JTextField();
-        jtxt_mesACT = new javax.swing.JTextField();
-        jtxt_anoACT = new javax.swing.JTextField();
-        jtxt_contratoMesACT = new javax.swing.JTextField();
-        jtxt_contratoAnoACT = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jtxt_sueldo = new javax.swing.JTextField();
+        jbtn_actualizar = new javax.swing.JButton();
         jbtn_volver = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -62,6 +63,11 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         jLabel2.setText("Buscar id de empleado:");
 
         jbtn_buscar.setText("Buscar");
+        jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Informacion a Actualizar"));
 
@@ -77,9 +83,20 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
 
         jtxt_deptACT.setText(" ");
 
-        jLabel8.setText("Fecha Contrato");
+        jLabel10.setText("Sueldo");
 
-        jLabel9.setText("Fecha Nacimiento:");
+        jtxt_sueldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_sueldoActionPerformed(evt);
+            }
+        });
+
+        jbtn_actualizar.setText("Actualizar");
+        jbtn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,46 +106,39 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(44, 44, 44)
-                                .addComponent(jtxt_rutACT))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtxt_nombreACT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtxt_deptACT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxt_contratoDiaACT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxt_contratoMesACT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxt_contratoAnoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxt_diaACT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtxt_mesACT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxt_anoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxt_apPaternoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtxt_apMaternoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jtxt_rutACT))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtxt_nombreACT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jLabel7))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jLabel10))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtxt_apMaternoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtn_actualizar)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxt_deptACT, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                .addComponent(jtxt_sueldo)))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,10 +154,8 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jtxt_rutACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addComponent(jtxt_contratoDiaACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtxt_contratoMesACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtxt_contratoAnoACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel10)
+                        .addComponent(jtxt_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -155,14 +163,10 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jtxt_apMaternoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jtxt_diaACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxt_mesACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxt_anoACT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtxt_apMaternoACT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtn_actualizar)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jbtn_volver.setText("Volver");
@@ -201,7 +205,7 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(31, 31, 31)
                             .addComponent(jLabel1))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +219,9 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
                     .addComponent(jtxt_buscarid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jbtn_volver)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -228,6 +232,50 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         menu.setVisible(true);
         dispose();  
     }//GEN-LAST:event_jbtn_volverActionPerformed
+    Registro reg = new Registro();
+    private void jtxt_sueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_sueldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_sueldoActionPerformed
+
+    private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
+    
+        int id = Integer.parseInt(this.jtxt_buscarid.getText());
+
+        Empleado empleado = reg.buscarPorId(id);
+        //rescato los datos del objeto libro
+        String nombre = empleado.getNombreEmpleado();
+        int rut = empleado.getRut();
+        String paterno = empleado.getAppaterno();
+        String materno = empleado.getApmaterno();
+        //String departamento = departamento.getNombreDept();
+        int sueldo = empleado.getSueldo();
+       
+        //pasar estas variables anteriores a los textos de cada texfield de la ventana
+        this.jtxt_nombreACT.setText(nombre);
+        this.jtxt_rutACT.setText(String.valueOf(rut));
+        this.jtxt_sueldo.setText(String.valueOf(sueldo));
+        this.jtxt_apPaternoACT.setText(paterno);
+        this.jtxt_apMaternoACT.setText(materno);
+    }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
+        int sueldo,rut, id;
+        String nombre, appaterno,apmaterno;
+
+        id = Integer.parseInt(this.jtxt_buscarid.getText());
+        sueldo = Integer.parseInt(this.jtxt_sueldo.getText());
+        rut = Integer.parseInt(this.jtxt_rutACT.getText());
+        
+       nombre = this.jtxt_nombreACT.getText();
+       appaterno = this.jtxt_apPaternoACT.getText();
+       apmaterno = this.jtxt_apMaternoACT.getText();
+       
+        Empleado empleado = new Empleado(id, rut, nombre, appaterno, apmaterno, sueldo);
+
+        reg.actualizarEmpleado(empleado);
+        JOptionPane.showMessageDialog(null, "Datos actualizados", "Actulizar", 2);
+        
+    }//GEN-LAST:event_jbtn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,31 +314,26 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtn_actualizar;
     private javax.swing.JButton jbtn_buscar;
     private javax.swing.JButton jbtn_volver;
-    private javax.swing.JTextField jtxt_anoACT;
     private javax.swing.JTextField jtxt_apMaternoACT;
     private javax.swing.JTextField jtxt_apPaternoACT;
     private javax.swing.JTextField jtxt_buscarid;
-    private javax.swing.JTextField jtxt_contratoAnoACT;
-    private javax.swing.JTextField jtxt_contratoDiaACT;
-    private javax.swing.JTextField jtxt_contratoMesACT;
     private javax.swing.JTextField jtxt_deptACT;
-    private javax.swing.JTextField jtxt_diaACT;
-    private javax.swing.JTextField jtxt_mesACT;
     private javax.swing.JTextField jtxt_nombreACT;
     private javax.swing.JTextField jtxt_rutACT;
+    private javax.swing.JTextField jtxt_sueldo;
     // End of variables declaration//GEN-END:variables
 }

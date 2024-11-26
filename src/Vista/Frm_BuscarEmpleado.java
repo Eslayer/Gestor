@@ -4,6 +4,11 @@
  */
 package Vista;
 
+import Controlador.Registro;
+import Modelo.Empleado;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Slayer
@@ -27,7 +32,7 @@ public class Frm_BuscarEmpleado extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtbl_listarPersona = new javax.swing.JTable();
+        jtbl_data = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jtxt_ListarID = new javax.swing.JTextField();
         jbtn_BuscarLista = new javax.swing.JButton();
@@ -36,12 +41,12 @@ public class Frm_BuscarEmpleado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jtbl_listarPersona.setModel(new javax.swing.table.DefaultTableModel(
+        jtbl_data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido Paterno", "Apellido Materno", "Departamento"
+                "Id", "Nombre", "Apellido Paterno", "Apellido Materno", "Rut"
             }
         ) {
             Class[] types = new Class [] {
@@ -59,11 +64,22 @@ public class Frm_BuscarEmpleado extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jtbl_listarPersona);
+        jScrollPane1.setViewportView(jtbl_data);
 
         jLabel1.setText("Ingresar ID:");
 
+        jtxt_ListarID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_ListarIDActionPerformed(evt);
+            }
+        });
+
         jbtn_BuscarLista.setText("Buscar");
+        jbtn_BuscarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_BuscarListaActionPerformed(evt);
+            }
+        });
 
         jbtn_volver.setText("Volver");
         jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +142,53 @@ public class Frm_BuscarEmpleado extends javax.swing.JFrame {
         dispose();  
     }//GEN-LAST:event_jbtn_volverActionPerformed
 
+    private void jbtn_BuscarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_BuscarListaActionPerformed
+    String nombre, paterno, materno,departamento;
+        int id, rut;
+
+
+        Registro reg = new Registro();
+        DefaultTableModel modelo = (DefaultTableModel) this.jtbl_data.getModel();
+
+        try {
+            id = Integer.parseInt(this.jtxt_ListarID.getText());
+
+        } catch (NumberFormatException e) {
+            id = 0;
+        }
+
+        modelo.setRowCount(0);
+
+        if (id == 0) {//listar todos los elementos 
+
+            ArrayList<Empleado> lista = reg.buscarTodos();
+            for (Empleado empleado : lista) {
+                id = empleado.getIdEmpleado();
+                nombre= empleado.getNombreEmpleado();
+                paterno = empleado.getAppaterno();
+                materno = empleado.getApmaterno();
+                rut = empleado.getRut();
+
+                modelo.addRow(new Object[]{id, nombre, paterno, materno,rut});
+
+            }
+        } else {
+            Empleado empleado = reg.buscarPorId(id);
+            id = empleado.getIdEmpleado();
+            nombre = empleado.getNombreEmpleado();
+            paterno = empleado.getAppaterno();
+            materno = empleado.getApmaterno();
+            rut = empleado.getRut();
+            
+            modelo.addRow(new Object[]{id, nombre, paterno, materno, rut});
+        }
+
+    }//GEN-LAST:event_jbtn_BuscarListaActionPerformed
+
+    private void jtxt_ListarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_ListarIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_ListarIDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,7 +230,7 @@ public class Frm_BuscarEmpleado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtn_BuscarLista;
     private javax.swing.JButton jbtn_volver;
-    private javax.swing.JTable jtbl_listarPersona;
+    private javax.swing.JTable jtbl_data;
     private javax.swing.JTextField jtxt_ListarID;
     // End of variables declaration//GEN-END:variables
 }
