@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 
 import Modelo.Departamento;
@@ -19,38 +16,7 @@ import java.util.ArrayList;
  * @author Slayer
  */
 public class Registro {
-//    public boolean agregarProducto(Producto producto, Marca marca)
-//    {
-//        try {
-//
-//            
-//            Conexion con = new Conexion();
-//            Connection cnx = con.obtenerConexion();
-//            
-//
-//            //SQL
-//            String query = "INSERT INTO producto(nombreProd,precio,cantStock,nombreMarca) VALUES(?,?,?,?)";
-//            PreparedStatement stmt = cnx.prepareStatement(query);
-//            
-//            //ahora le diremos los ?,?,?,?,?
-//            stmt.setString(1, producto.getNombreProd());
-//            stmt.setInt(2, producto.getPrecio());
-//            stmt.setInt(3, producto.getCant_stock());
-//            stmt.setString(4, marca.getNombreMarca());
-//            stmt.executeUpdate();
-//            stmt.close();
-//            cnx.close();
-//            
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println("Error en SQL al agregar producto " + e.getMessage());
-//            return false;
-//        }
-//        catch(Exception e){
-//            System.out.println("Error en el método agregar producto " + e.getMessage());
-//            return false;
-//        }
-//    }//fin de metodo
+
     public boolean agregarEmpleado(Empleado empleado)
     {
         try {
@@ -60,11 +26,11 @@ public class Registro {
             Connection cnx = con.obtenerConexion();
             
 
-            //SQL
+
             String query = "INSERT INTO empleado(rut,nombreEmpleado,appaterno,apmaterno,sueldo) VALUES(?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
-            //ahora le diremos los ?,?,?,?,?
+
             stmt.setInt(1, empleado.getRut());
             stmt.setString(2, empleado.getNombreEmpleado());
             stmt.setString(3, empleado.getAppaterno());
@@ -91,11 +57,11 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            //SQL
+
             String query = "UPDATE empleado set nombreEmpleado = ?,rut=?,appaterno=?,apmaterno=?,sueldo=? WHERE idEmpleado=?" ;
             PreparedStatement stmt = cnx.prepareStatement(query);
             
-            //ahora le diremos los ?,?,?,?,?
+
             stmt.setString(1, empleado.getNombreEmpleado());
             stmt.setInt(2, empleado.getRut());
             stmt.setString(3, empleado.getAppaterno());
@@ -125,7 +91,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            //SQL
+
             String query = "SELECT * FROM empleado WHERE idEmpleado = ?" ;
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, idEmpleado);
@@ -158,7 +124,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            //SQL
+
             String query = "SELECT * FROM empleado ORDER BY nombreEmpleado" ;
             PreparedStatement stmt = cnx.prepareStatement(query);
             
@@ -213,64 +179,5 @@ public class Registro {
             System.out.println("Error en el método eliminar Empleado " + e.getMessage());
             return false;
         }
-    }
-//    public ArrayList<Departamento> buscarTodosDept()
-//    {
-//        ArrayList<Departamento> lista2 = new ArrayList<>();
-//        try {
-//                   
-//            Conexion con = new Conexion();
-//            Connection cnx = con.obtenerConexion();
-//            
-//            //SQL
-//            String query = "SELECT * FROM Departamento ORDER BY nombreDepartamento" ;
-//            PreparedStatement stmt = cnx.prepareStatement(query);
-//            
-//            ResultSet rs = stmt.executeQuery();
-//            
-//
-//            while (rs.next()) {
-//                Departamento dept = new Departamento();
-//                dept.getNombreDept(rs.getString("paterno"));
-//
-//                
-//                lista2.add(dept);
-//            }
-//            rs.close();
-//            stmt.close();
-//            cnx.close();
-//            
-//        } catch (SQLException e) {
-//            System.out.println("Error en SQL al listar Departamento " + e.getMessage());
-//        }
-//       return lista2;
-//    }
-//public boolean agregarMarca(Marca marca)
-//    {
-//        try {
-//            
-//            Conexion con = new Conexion();
-//            Connection cnx = con.obtenerConexion();
-//                     //SQL
-//            String query = "INSERT INTO producto(nombreMarca) VALUES(?)";
-//            PreparedStatement stmt = cnx.prepareStatement(query);
-//            
-//            //ahora le diremos los ?,?,?,?,?
-//            stmt.setString(1, marca.getNombreMarca());
-//            
-//            stmt.executeUpdate();
-//            stmt.close();
-//            cnx.close();
-//            
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println("Error en SQL al agregar marca " + e.getMessage());
-//            return false;
-//        }
-//        catch(Exception e){
-//            System.out.println("Error en el método agregar marca " + e.getMessage());
-//            return false;
-//        }
-//    }
-    
+    }  
 }
