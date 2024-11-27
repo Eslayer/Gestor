@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
 /**
@@ -29,7 +26,7 @@ public class Departamento {
         this.idDept = idDept;
     }
 
-    public String getNombreDept(String string) {
+    public String getNombreDept() {
         return nombreDept;
     }
 
@@ -37,10 +34,13 @@ public class Departamento {
         this.nombreDept = nombreDept;
     }
 
+ 
+
     @Override
     public String toString() {
         return "Departamento{" + "idDept=" + idDept + ", nombreDept=" + nombreDept + '}';
     }
+
     
     
     

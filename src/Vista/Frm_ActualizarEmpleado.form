@@ -234,6 +234,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxt_nombreACT">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxt_nombreACTActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxt_rutACT">
         </Component>

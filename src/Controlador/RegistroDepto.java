@@ -6,8 +6,6 @@ package Controlador;
 
 import Modelo.Departamento;
 import bd.Conexion;
-import Modelo.Departamento;
-import bd.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +32,7 @@ public class RegistroDepto {
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
-            stmt.setString(1, departamento.getNombreDept(query));
+            stmt.setString(1, departamento.getNombreDept());
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
@@ -69,6 +67,7 @@ public class RegistroDepto {
             if (rs.next()) {
                 
                 dept.setIdDept(rs.getInt("idDept"));
+                dept.setNombreDept(rs.getString("nombreDept"));
 
                 
             }
@@ -86,12 +85,11 @@ public class RegistroDepto {
     {
         ArrayList<Departamento> lista2 = new ArrayList<>();
         try {
-                   
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
             //SQL
-            String query = "SELECT * FROM Departamento ORDER BY nombreDepartamento" ;
+            String query = "SELECT * FROM departamento ORDER BY nombreDept" ;
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             ResultSet rs = stmt.executeQuery();
@@ -99,7 +97,8 @@ public class RegistroDepto {
 
             while (rs.next()) {
                 Departamento dept = new Departamento();
-                dept.getNombreDept(rs.getString("nombreDept"));
+                dept.setIdDept(rs.getInt("idDept"));
+                dept.setNombreDept(rs.getString("nombreDept"));
 
                 
                 lista2.add(dept);
@@ -113,34 +112,45 @@ public class RegistroDepto {
         }
        return lista2;
     }
-        public boolean eliminar(int idDept)
+        public boolean eliminar(String nombreDept)
     {
         try {
-            
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
-            
-            //sentencia del sql
-            String query = "DELETE FROM departamento WHERE idDept=?" ;
-            PreparedStatement stmt = cnx.prepareStatement(query);
-            
-            //poner valor a el prepared statement es decir al stmt
-            stmt.setInt(1, idDept);
-            
-            
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            
-            return true;
-        } catch (SQLException e) {
-            System.out.println("Error en SQL al elimina Departamento " + e.getMessage());
-            return false;
+        // Establecer conexión con la base de datos
+        Conexion con = new Conexion();
+        Connection cnx = con.obtenerConexion();
+        
+        // Sentencia SQL para eliminar empleados cuyo departamento coincida con el nombreDept ingresado
+        String query = "DELETE FROM empleado WHERE nombreDept LIKE ?" ;
+        PreparedStatement stmt = cnx.prepareStatement(query);
+        
+        // Asignar el valor al PreparedStatement
+        // El '%' se usa como comodín para que coincida con cualquier nombre que contenga 'nombreDept'
+        stmt.setString(1, "%" + nombreDept + "%");  // Buscará cualquier departamento que contenga el nombreDept
+
+        // Ejecutar la eliminación
+        int filaseliminadas = stmt.executeUpdate();
+        
+
+        if (filaseliminadas > 0) {
+            System.out.println("Se eliminaron " + filaseliminadas + " empleados del departamento " + nombreDept);
+        } else {
+            System.out.println("No se encontraron empleados en el departamento " + nombreDept);
         }
-        catch(Exception e){
-            System.out.println("Error en el método eliminar Depto " + e.getMessage());
-            return false;
-        }
+        
+        // Cerrar recursos
+        stmt.close();
+        cnx.close();
+        
+        return true;  // Indicamos que la operación fue exitosa
+    } catch (SQLException e) {
+        // Capturar errores relacionados con SQL
+        System.out.println("Error en SQL al eliminar empleados: " + e.getMessage());
+        return false;  // Retornar falso si hay un error SQL
+    } catch (Exception e) {
+        // Capturar cualquier otro tipo de error
+        System.out.println("Error en el método eliminar empleados: " + e.getMessage());
+        return false;  // Retornar falso si hay un error general
+    }
     }
          public boolean actualizar(Departamento departamento)
     {
@@ -154,8 +164,8 @@ public class RegistroDepto {
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             //ahora le diremos los ?,?,?,?,?
-            stmt.setString(1, departamento.getNombreDept(query));
-            stmt.setInt(2, departamento.getIdDept());
+            stmt.setInt(1, departamento.getIdDept());
+            stmt.setString(1, departamento.getNombreDept());
             
             stmt.executeUpdate();
             stmt.close();

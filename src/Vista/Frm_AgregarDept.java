@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Slayer
+ * @author Mauri
  */
 public class Frm_AgregarDept extends javax.swing.JFrame {
 
@@ -126,7 +126,7 @@ public class Frm_AgregarDept extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtn_guardarActionPerformed
 
     private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
-        Frm_MenuEmpleados menu = new Frm_MenuEmpleados();
+     Frm_MenuDepartamentos menu = new Frm_MenuDepartamentos();
         menu.setVisible(true);
         dispose(); 
     }//GEN-LAST:event_jbtn_volverActionPerformed

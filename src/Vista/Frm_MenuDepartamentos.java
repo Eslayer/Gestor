@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author Slayer
+ * @author Mauri
  */
 public class Frm_MenuDepartamentos extends javax.swing.JFrame {
 
@@ -28,7 +28,6 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jbtn_inDept = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -44,11 +43,19 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Actualizar Departamento");
-
         jButton3.setText("Buscar Departamento");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Eliminar Departamento");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,7 +69,6 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
                             .addComponent(jbtn_inDept)
                             .addComponent(jButton3)
                             .addComponent(jButton4))))
@@ -76,12 +82,10 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jbtn_inDept)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(30, 30, 30)
                 .addComponent(jButton3)
-                .addGap(30, 30, 30)
+                .addGap(26, 26, 26)
                 .addComponent(jButton4)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,7 +94,20 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
     private void jbtn_inDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_inDeptActionPerformed
     Frm_AgregarDept dept = new Frm_AgregarDept();
     dept.setVisible(true);
+    dispose();
     }//GEN-LAST:event_jbtn_inDeptActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    Frm_BuscarDept dept = new Frm_BuscarDept();
+    dept.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    Frm_EliminarDept dept= new Frm_EliminarDept();
+    dept.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,7 +145,6 @@ public class Frm_MenuDepartamentos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

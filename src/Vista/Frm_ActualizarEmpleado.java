@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Slayer
+ * @author Mauri
  */
 public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
 
@@ -78,6 +78,12 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         jLabel5.setText("Apellido Paterno");
 
         jLabel6.setText("Apellido Materno");
+
+        jtxt_nombreACT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_nombreACTActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Departamento");
 
@@ -247,19 +253,20 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         int rut = empleado.getRut();
         String paterno = empleado.getAppaterno();
         String materno = empleado.getApmaterno();
-        //String departamento = departamento.getNombreDept();
+        //String departamento = ();
         int sueldo = empleado.getSueldo();
        
         //pasar estas variables anteriores a los textos de cada texfield de la ventana
         this.jtxt_nombreACT.setText(nombre);
         this.jtxt_rutACT.setText(String.valueOf(rut));
+        //this.jtxt_deptACT.setText(departamento);
         this.jtxt_sueldo.setText(String.valueOf(sueldo));
         this.jtxt_apPaternoACT.setText(paterno);
         this.jtxt_apMaternoACT.setText(materno);
     }//GEN-LAST:event_jbtn_buscarActionPerformed
 
     private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
-        int sueldo,rut, id;
+    int sueldo,rut, id;
         String nombre, appaterno,apmaterno;
 
         id = Integer.parseInt(this.jtxt_buscarid.getText());
@@ -276,6 +283,10 @@ public class Frm_ActualizarEmpleado extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Datos actualizados", "Actulizar", 2);
         
     }//GEN-LAST:event_jbtn_actualizarActionPerformed
+
+    private void jtxt_nombreACTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_nombreACTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_nombreACTActionPerformed
 
     /**
      * @param args the command line arguments
